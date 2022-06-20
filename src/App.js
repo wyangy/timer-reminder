@@ -14,11 +14,7 @@ function App() {
 	const counterBegin = 5;
 	const [timer, setTimer] = useState(counterBegin);
 
-	// const [audio] = useState(new Audio("../audio/chime.mp3"));
-	// const [playing, setPlaying] = useState(false);
 	const [isPlaying, setIsPlaying] = useState(false);
-
-	// const toggle = () => setPlaying(!playing);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -36,8 +32,6 @@ function App() {
 				console.log("POTATO");
 				setIsPlaying(true);
 			}
-
-			// playing ? audio.play() : audio.pause();
 		}, 1000);
 
 		return () => clearInterval(interval);
@@ -47,10 +41,6 @@ function App() {
 		<main>
 			<ShowCurrentTime hour={hour} minute={minute} second={second} />
 			<ShowTimer timer={timer} />
-			{/* <button onClick={() => setIsPlaying(!isPlaying)}></button> */}
-			{/* {timer === 0 && <PlayChime />} */}
-			{/* <PlayChime /> */}
-			{/* <PlayChime isPlaying={isPlaying} setIsPlaying={setIsPlaying} /> */}
 			<PlayChime isPlaying={isPlaying} />
 		</main>
 	);

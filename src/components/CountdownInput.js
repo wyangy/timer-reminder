@@ -15,7 +15,7 @@ const CountdownInput = ({ counterBegin, setCounterBegin }) => {
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="counterBegin">Counter Begin</label>
+				<label htmlFor="counterBegin">Minute</label>
 				<input
 					id="counterBegin"
 					type="number"
@@ -24,7 +24,7 @@ const CountdownInput = ({ counterBegin, setCounterBegin }) => {
 					step="1"
 					value={counterBegin}
 					onChange={(event) => {
-						setCounterBegin(Number(event.target.value));
+						setCounterBegin(Number(event.target.value * 60));
 					}}
 					required
 				/>

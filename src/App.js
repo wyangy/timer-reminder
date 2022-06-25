@@ -13,9 +13,10 @@ function App() {
 	const [second, setSecond] = useState(new Date().getSeconds());
 
 	// const counterBegin = 5;
-	const [counterBegin, setCounterBegin] = useState(0);
+	const [counterBegin, setCounterBegin] = useState(60);
 	const [timer, setTimer] = useState(counterBegin);
 
+	const [isCountingDown, setIsCountingDown] = useState(false);
 	const [isPlaying, setIsPlaying] = useState(false);
 
 	useEffect(() => {
@@ -25,6 +26,10 @@ function App() {
 			setHour(date.getHours());
 			setMinute(date.getMinutes());
 			setSecond(date.getSeconds());
+
+			if (isCountingDown === false) {
+				return;
+			}
 
 			setTimer(timerCountdown(counterBegin, timer));
 			console.log(timer);
@@ -37,7 +42,7 @@ function App() {
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, [hour, minute, second, timer]);
+	}, [counterBegin, hour, minute, second, timer, isCountingDown]);
 
 	return (
 		<main>
@@ -45,6 +50,7 @@ function App() {
 			<CountdownInput
 				// counterBegin={counterBegin}
 				setCounterBegin={setCounterBegin}
+				setIsCountingDown={setIsCountingDown}
 			/>
 			<ShowTimer timer={timer} />
 			<PlayChime isPlaying={isPlaying} />

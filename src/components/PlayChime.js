@@ -7,7 +7,6 @@ const PlayChime = ({ isPlaying }) => {
 			url={chime}
 			playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
 			playFromPosition={150}
-			onFinishedPlaying={Sound.status.STOPPED}
 		/>
 	);
 };
